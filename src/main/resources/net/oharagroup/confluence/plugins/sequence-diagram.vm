@@ -1,0 +1,4 @@
+#requireResource("net.oharagroup.confluence.plugins.confluence-sequence-diagrams:resources")
+<div class="diagram" data-theme="$!{theme}">
+	${diagram}
+</div>

@@ -1,0 +1,38 @@
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/sequenceDiagramIcon.png</param>
+        <param name="plugin-logo">images/sequenceDiagramIcon.png</param>
+    </plugin-info>
+
+		<xhtml-macro name="sequence-diagram" class="net.oharagroup.confluence.plugins.SequenceDiagramMacro" key="sequence-diagram" icon="/download/resources/net.oharagroup.confluence.plugins.confluence-sequence-diagrams/images/sequenceDiagramIcon.png">
+			<description>Creates a sequence diagram from plain text instructions</description>>
+			<category name="visuals"/>
+			<parameters>
+				<parameter name="theme" type="enum" required="true" default="simple">
+					<value name="simple"/>
+					<value name="hand"/>
+					<option key="showNameInPlaceholder" value="true"/>
+					<option key="showValueInPlaceholder" value="true"/>
+				</parameter>
+			</parameters>
+		</xhtml-macro>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="confluence-sequence-diagrams"/>
+    
+		<!-- images -->
+		<resource type="download" name="images/" location="images">
+			<param name="content-type" value="image/png"/>
+		</resource>
+
+    <!-- add our web resources -->
+    <web-resource key="resources">
+        <resource type="download" name="raphael-min.js" location="/js/raphael-min.js"/>
+        <resource type="download" name="sequence-diagram-min.js" location="/js/sequence-diagram-min.js"/>
+        <resource type="download" name="confluence-sequence-diagram.js" location="/js/confluence-sequence-diagram.js"/>
+        <dependency>confluence.atlassian.auiplugin:ajs</dependency>
+    </web-resource>
+</atlassian-plugin>
